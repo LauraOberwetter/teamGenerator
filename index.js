@@ -26,7 +26,7 @@ const questions = [
         message: 'Employee email address:',
     },
     {
-        type: 'checkbox',
+        type: 'list',
         name: 'role',
         message: 'Employee role:',
         choices: [
@@ -35,3 +35,12 @@ const questions = [
     },
 
 ]
+
+function init() {
+    inquirer.prompt(questions).then((responses) => { 
+        console.log(responses);
+    })
+}
+
+// Function call to initialize app
+init();
