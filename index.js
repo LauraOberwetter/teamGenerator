@@ -38,9 +38,20 @@ const questions = [
 
 function init() {
     inquirer.prompt(questions).then((responses) => { 
-        console.log(responses);
-    })
-}
+        console.log(responses);        
+    }).then(userChoice) => {
+        switch (questions[3].responses) { //cases and respective functions to be called here
+            case "Manager":
+
+                break;
+            case "Engineer":
+            
+                break;
+            case "Intern":
+        
+                break;
+        }
+}}
 
 // Function call to initialize app
 init();
