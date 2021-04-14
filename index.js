@@ -8,7 +8,7 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Employee = require('./lib/Employee');
 
-
+//employee questions
 const questions = [
     {
         type: 'input',
@@ -36,22 +36,89 @@ const questions = [
 
 ]
 
-function init() {
-    inquirer.prompt(questions).then((responses) => { 
-        console.log(responses);        
-    }).then(userChoice) => {
-        switch (questions[3].responses) { //cases and respective functions to be called here
-            case "Manager":
+//manager question
+const mgrQ = [
+    {
+        type: 'input',
+        name: 'office',
+        message: 'Manager office number:',
+    }
+];
 
-                break;
-            case "Engineer":
-            
-                break;
-            case "Intern":
-        
-                break;
+function manager() {
+    inquirer.prompt(mgrQ).then((responses) => {
+        console.log(responses);
+
+        class ManagerQ { //make a new instance of the manager class with all of the info you collected
+            constructor(office) {
+                this.office = office;
+            }
         }
-}}
+        responses.push(ManagerQ); //add that to a team array
+    })};
+
+//engineer question
+const engQ = [
+        {
+            type: 'input',
+            name: 'github',
+            message: 'Engineer GitHub link:',
+        }
+    ];
+    function engineer() {
+        inquirer.prompt(engQ).then((responses) => {
+            console.log(responses);
+
+            class EngineerQ {
+                constructor(github) {
+                    this.github = github;
+                }
+            }
+            responses.push(EngineerQ); //add that to a team array
+        })};
+
+//intern question
+const intQ = [
+            {
+                type: 'input',
+                name: 'school',
+                message: 'Intern school:',
+            }
+        ];
+        function intern() {
+            inquirer.prompt(intQ).then((responses) => {
+                console.log(responses);
+
+                class InternQ {
+                    constructor(school) {
+                        this.school = school;
+                    }
+                }
+                responses.push(InternQ); //add that to a team array
+
+            })};
+
+function initRoleQ() {
+        inquirer.prompt(questions).then((responses) => {
+            console.log(responses);
+            switch (responses.role) { //cases and respective functions to be called here
+                case "Manager":
+                    manager();
+                    break;
+                case "Engineer":
+                    engineer();
+                    break;
+                case "Intern":
+                    Intern();
+                    break;
+            }
+        })
+    }
 
 // Function call to initialize app
 init();
+
+
+
+// .then(userChoice) => {
+// }
