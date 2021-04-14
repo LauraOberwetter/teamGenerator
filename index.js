@@ -1,7 +1,7 @@
 const inquirer = require("inquirer")
-
 const fs = require("fs") // writing to HTML with fs method //what to write // where to write
 const path = require("path");//path module provides utilities for working with file and directory paths
+const generateHTML = require("./generateHTML");
 
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -33,14 +33,8 @@ const questions = [
             'Manager', 'Engineer', 'Intern'
         ],
     },
-
 ]
 
-function init() {
-    inquirer.prompt(questions).then((responses) => { 
-        console.log(responses);
-    })
-}
 
 //manager question
 const mgrQ = [
@@ -60,7 +54,7 @@ function manager() {
                 this.office = office;
             }
         }
-        responses.push(ManagerQ); //add that to a team array
+        questions.push(responses); //add that to a team array
     })};
 
 //engineer question
@@ -80,7 +74,7 @@ const engQ = [
                     this.github = github;
                 }
             }
-            responses.push(EngineerQ); //add that to a team array
+            questions.push(responses); //add that to a team array
         })};
 
 //intern question
@@ -100,7 +94,7 @@ const intQ = [
                         this.school = school;
                     }
                 }
-                responses.push(InternQ); //add that to a team array
+                questions.push(responses); //add that to a team array
 
             })};
 
@@ -115,16 +109,12 @@ function initRoleQ() {
                     engineer();
                     break;
                 case "Intern":
-                    Intern();
+                    intern();
                     break;
             }
         })
     }
 
 // Function call to initialize app
-init();
 
-
-
-// .then(userChoice) => {
-// }
+initRoleQ();
