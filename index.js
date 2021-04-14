@@ -36,6 +36,12 @@ const questions = [
 
 ]
 
+function init() {
+    inquirer.prompt(questions).then((responses) => { 
+        console.log(responses);
+    })
+}
+
 //manager question
 const mgrQ = [
     {
