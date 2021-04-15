@@ -38,6 +38,7 @@ const questions = [
 
 //manager question
 const mgrQ = [
+
     {
         type: 'input',
         name: 'office',
@@ -54,7 +55,7 @@ function manager() {
                 this.office = office;
             }
         }
-        questions.push(responses); //add that to a team array
+        //questions.push(responses); //add that to a team array
     })};
 
 //engineer question
@@ -74,7 +75,7 @@ const engQ = [
                     this.github = github;
                 }
             }
-            questions.push(responses); //add that to a team array
+            //questions.push(responses); //add that to a team array
         })};
 
 //intern question
@@ -94,9 +95,11 @@ const intQ = [
                         this.school = school;
                     }
                 }
-                questions.push(responses); //add that to a team array
+                //questions.push(responses); //add that to a team array
 
-            })};
+            })
+
+        };
 
 function initRoleQ() {
         inquirer.prompt(questions).then((responses) => {
@@ -113,8 +116,33 @@ function initRoleQ() {
                     break;
             }
         })
+
     }
+
+
+if (mgrQ.office) {
+    var ogs = mgrQ.office
+} else if (engQ.github) {
+    var ogs = engQ.github
+} else {
+    var ogs = intQ.school
+};
+
+var team = [
+    questions.name,
+    questions.id,
+    questions.email,
+    questions.role,
+    ogs
+]
+
+console.log("ogs is " + ogs)
+console.log(team)
+    
+
 
 // Function call to initialize app
 
 initRoleQ();
+
+
