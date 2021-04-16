@@ -101,10 +101,10 @@ function initRoleQ() {
                     manager(responses);
                     break;
                 case "Engineer":
-                    engineer();
+                    engineer(responses);
                     break;
                 case "Intern":
-                    intern();
+                    intern(responses);
                     break;
             }
         })
