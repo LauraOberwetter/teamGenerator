@@ -7,6 +7,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Employee = require('./lib/Employee');
+const { prompts } = require("inquirer");
 
 const teamArr = [];
 
@@ -35,6 +36,17 @@ const questions = [
             'Manager', 'Engineer', 'Intern'
         ],
     },
+]
+
+const end = [{
+    type: 'list',
+    name: 'end',
+    message: 'Would you like to add another employee?',
+    choices: [
+        'Yes', 'No'
+    ],
+},
+
 ]
 
 
@@ -110,7 +122,16 @@ function initRoleQ() {
                 break;
         }
     })
-
+    inquirer.prompt(end).then((responses) => {
+        switch (responses.end) {
+            case "Yes":
+                initRoleQ;
+                break;
+            case "No":
+                prompts.complete;
+                break;
+        }
+    })
 }
 
 function writeToFile(fileName, data) {
