@@ -8,6 +8,8 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const Employee = require('./lib/Employee');
 
+const teamArr = [];
+
 //employee questions
 const questions = [
     {
@@ -46,16 +48,13 @@ const mgrQ = [
     }
 ];
 
-function manager() {
+function manager(empInfo) {
+    //console.log(empInfo); // logs object with name/id/email/role a second time
     inquirer.prompt(mgrQ).then((responses) => {
-        console.log(responses);
-
-        class ManagerQ { //make a new instance of the manager class with all of the info you collected
-            constructor(office) {
-                this.office = office;
-            }
-        }
-        //questions.push(responses); //add that to a team array
+        empInfo.officeNo = responses.office;
+        teamArr.push(empInfo);
+        console.log(teamArr);
+        //console.log(responses); // logs the answer to mgrQ in addition to full team array
     })};
 
 //engineer question
@@ -66,16 +65,13 @@ const engQ = [
             message: 'Engineer GitHub link:',
         }
     ];
-    function engineer() {
+    function engineer(empInfo) {
         inquirer.prompt(engQ).then((responses) => {
-            console.log(responses);
+            empInfo.githubLink = responses.github;
+            teamArr.push(empInfo);
+            console.log(teamArr);
+            console.log(responses.github);
 
-            class EngineerQ {
-                constructor(github) {
-                    this.github = github;
-                }
-            }
-            //questions.push(responses); //add that to a team array
         })};
 
 //intern question
@@ -86,16 +82,11 @@ const intQ = [
                 message: 'Intern school:',
             }
         ];
-        function intern() {
+        function intern(empInfo) {
             inquirer.prompt(intQ).then((responses) => {
-                console.log(responses);
-
-                class InternQ {
-                    constructor(school) {
-                        this.school = school;
-                    }
-                }
-                //questions.push(responses); //add that to a team array
+                empInfo.schoolName = responses.school;
+                teamArr.push(empInfo);
+                console.log(teamArr);
 
             })
 
@@ -104,9 +95,10 @@ const intQ = [
 function initRoleQ() {
         inquirer.prompt(questions).then((responses) => {
             console.log(responses);
-            switch (responses.role) { //cases and respective functions to be called here
+            //team.push(responses);
+            switch (responses.role) { 
                 case "Manager":
-                    manager();
+                    manager(responses);
                     break;
                 case "Engineer":
                     engineer();
@@ -119,29 +111,6 @@ function initRoleQ() {
 
     }
 
-
-if (mgrQ.office) {
-    var ogs = mgrQ.office
-} else if (engQ.github) {
-    var ogs = engQ.github
-} else {
-    var ogs = intQ.school
-};
-
-var team = [
-    questions.name,
-    questions.id,
-    questions.email,
-    questions.role,
-    ogs
-]
-
-console.log("ogs is " + ogs)
-console.log(team)
-    
-
-
-// Function call to initialize app
 
 initRoleQ();
 
