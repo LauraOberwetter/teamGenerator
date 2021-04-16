@@ -23,6 +23,7 @@
   This project will be used to quickly generate a easy to follow team roster
 
   ## Visual
+  https://user-images.githubusercontent.com/23666524/114976649-f419cf00-9e4b-11eb-99f4-a3ba0144b37a.mov
   
 
   ## Contribution
