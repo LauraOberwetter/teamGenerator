@@ -114,12 +114,12 @@ function initRoleQ() {
 }
 
 function writeToFile(fileName, data) {
-    let markdown = data;
+    let teamArr = data;
     return fs.writeFileSync(path.join(process.cwd(), fileName), data) //file in current working directory
 
 }
 
-writeToFile("index.html", generateHTML(responses))
+writeToFile("index.html", generateHTML(teamArr))
 initRoleQ();
 
 
