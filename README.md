@@ -7,6 +7,7 @@
       * Description
       * Installation
       * Usage
+      * Visual
       * Contributing
       * Tests
       * Contact
@@ -21,7 +22,7 @@
   ### It is recommended that this program is used as follows: 
   This project will be used to quickly generate a easy to follow team roster
 
-  ## License
+  ## Visual
   
 
   ## Contribution
